@@ -20,25 +20,6 @@ public class UserServiceImpl implements UserService{
 		
 		User user = userDao.findUserById(id);
 		
-		
-		User user2 = new User();
-		user2.setId("12");
-		user2.setUserName("xiaohong");
-		user2.setPassword("123");
-		user2.setAge(22);
-		userDao.insertUser(user2);
-		
-		int i = 1/0;
-		
-		User user3 = new User();
-		user3.setId("13");
-		user3.setUserName("xiaowu");
-		user3.setPassword("123");
-		user3.setAge(22);
-		userDao.insertUser(user3);
-		
-		
-		
 		return user;
 	}
 	
