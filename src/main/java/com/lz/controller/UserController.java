@@ -47,7 +47,7 @@ public class UserController {
 			
 			if(reuser != null ) {
 				model.addAttribute("message", "登入成功");
-				return "success";
+				return "tinHeart";
 			}else {
 				model.addAttribute("message", "你输入的用户或密码不正确");
 				return "login";
