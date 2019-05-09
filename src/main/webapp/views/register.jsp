@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +16,13 @@
     <div class="register-1">
         <!--//注册页面-->
         <div class="register">
-            <div class="register-welcome">欢迎注册</div>
-
+       		<div id="register-user" style="color: red;font-size: 15px;margin-left: 100px">${message }</div>
+            <div class="register-welcome">欢迎注册
+            	 
+            </div>
+	
             <div class="register-user">
-                <form action="userRegister" method="post" onsubmit="return u_register()">
+                <form action="<%=basePath%>/user/insertUser" method="post" onsubmit="return u_register()">
                     <table>
                         <tr class="login-tr">
                             <td class="login-td">用户名</td>

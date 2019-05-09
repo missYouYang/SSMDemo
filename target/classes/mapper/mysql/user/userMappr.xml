@@ -9,25 +9,27 @@
 	    <id column="id" property="id" jdbcType="VARCHAR" />
 	    <result column="user_name" property="userName" jdbcType="VARCHAR" />
 	    <result column="password" property="password" jdbcType="VARCHAR" />
-	    <result column="age" property="age" jdbcType="INTEGER" />
+	    <result column="telPhone" property="telPhone" jdbcType="VARCHAR" />
+	    <result column="sex" property="sex" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<sql id="Base_Column_List" >
-    	id, user_name, password, age
+    	id, user_name, password,telPhone,sex
  	</sql>
 	
-	<!-- 根据id查找用户 -->
-	<select id="findUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
+	<!-- 根据用户名和密码查找用户 -->
+	<select id="findUserByNameAndPs" parameterType="java.lang.String" resultMap="BaseResultMap">
 		select 
 			<include refid="Base_Column_List" />
 		from 
 			user 
-		where id = #{id,jdbcType=VARCHAR}
+		where 
+			user_name = #{userName,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
 	</select>
 	
 	<!-- 添加数据 -->
-	<insert id="insertUser" parameterType="com.lz.model.User">
-		insert into user(id,user_name,password,age) values(#{id},#{userName},#{password},#{age})
+	<insert id="insertUser" parameterType="com.lz.model.User" useGeneratedKeys="true" keyProperty="id">
+		insert into user(user_name,password,telPhone,sex) values(#{userName},#{password},#{telPhone},#{sex})
 	</insert>
 	
 	

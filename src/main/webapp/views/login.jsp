@@ -8,22 +8,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <meta charset="UTF-8">
     <title>登入页面</title>
-   <!-- <link rel="stylesheet" href="../static/css/login.css" type="text/css">
-    <script type="text/javascript" src="../static/js/login.js"></script>-->
     <link rel="stylesheet" href="<%=basePath%>static/css/login.css" type="text/css">
     <script type="text/javascript" src="<%=basePath%>static/js/login.js"></script>
 </head>
 <body marginwidth="0" marginheight="0">
 <div class="login">
+	<%-- <div class="user-login">${message }</div> --%>
     <div class="login-box">
-        <form action="/user/userLogin" method="get" id="form_login" onsubmit="return user_login()" style="margin-left: 38px">
-            <div class="user-login">密码登入</div>
-
+        <form action="<%=basePath%>/user/userLogin" method="post" id="form_login" onsubmit="return user_login()" style="margin-left: 38px">
+            <div class="user-login" >密码登入
+            	 <div id="username_error" style="color: red;font-size: 15px">${message }</div>
+            </div>
+			
             <!--//用户-->
             <div class="userName-login">
                 <input type="text" class="login-userName-input" name="userName" id="userName"  placeholder="请输入用户名">
                 <div id="username_error" ></div>
-                <div id="username2_error" th:text="${message}" style="color: red; font-size: 16px ;text-align: center"></div>
+                <div id="username2_error" style="color: red; font-size: 16px ;text-align: center"></div>
             </div>
             <!--//m密码-->
             <div class="userName-login">

@@ -24,3 +24,4 @@ function user_login(){
 function user_register() {
     window.location.href = "../views/register.jsp";
 }
+

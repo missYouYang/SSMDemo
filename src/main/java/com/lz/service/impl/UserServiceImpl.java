@@ -16,11 +16,26 @@ public class UserServiceImpl implements UserService{
 	@Resource
 	private UserDao userDao;
 
-	public User findUserById(String id) {
-		
-		User user = userDao.findUserById(id);
-		
-		return user;
+	/**
+	 * 根据用户名和密码查询用户
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public User findUserByNameAndPs(User user) {
+		User reuser = userDao.findUserByNameAndPs(user);
+		return reuser;
+	}
+	
+    /**添加用户
+     * @param user
+     * @param model
+     * @return
+     */
+	@Override
+	public int insertUser(User user) {
+		int i = userDao.insertUser(user);
+		return i;
 	}
 	
 }

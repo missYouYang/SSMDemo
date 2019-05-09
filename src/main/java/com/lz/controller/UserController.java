@@ -23,12 +23,66 @@ public class UserController {
     @Autowired
     private UserService userService;
     
+    /**
+     * 原始界面
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/test",method=RequestMethod.GET)  
     public String test(HttpServletRequest request,Model model){  
-        String userId = request.getParameter("id");  
-        User user = userService.findUserById(userId);
-        log.debug(user.toString());
-        model.addAttribute("user", user);  
         return "login";  
     }  
+    
+    /**查询用户
+     * @param user
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/userLogin",method = RequestMethod.POST)
+    public String userLogin(User user,Model model) {
+    	
+    	try {
+			User reuser = userService.findUserByNameAndPs(user);
+			
+			if(reuser != null ) {
+				model.addAttribute("message", "登入成功");
+				return "success";
+			}else {
+				model.addAttribute("message", "你输入的用户或密码不正确");
+				return "login";
+			}
+		} catch (Exception e) {
+			model.addAttribute("message", "访问出现异常");
+			return "login";
+		}
+	
+    	
+    }
+    
+    /**添加用户
+     * @param user
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/insertUser",method = RequestMethod.POST)
+    public String insertUser(User user,Model model) {
+    	
+    	try {
+			int i = userService.insertUser(user);
+			if(i == 1 ) {
+				return "login";
+			}else {
+				model.addAttribute("message", "注册失败");
+				return "register";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "访问出现异常");
+			return "register";
+		}
+	
+    	
+    }
+    
 }

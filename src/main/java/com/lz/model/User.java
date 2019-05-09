@@ -1,21 +1,25 @@
 package com.lz.model;
 
+import javax.persistence.Id;
+
 public class User {
 	
-	 private String id;
+	@Id
+	private int id;
 
     private String userName;
 
     private String password;
 
-    private Integer age;
+    private String telPhone;
     
-
-    public String getId() {
+    private String sex;
+    
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -35,18 +39,26 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getAge() {
-        return age;
-    }
+    public String getTelPhone() {
+		return telPhone;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public void setTelPhone(String telPhone) {
+		this.telPhone = telPhone;
+	}
 
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", userName=" + userName + ", password="
-                + password + ", age=" + age + "]";
-    }
-	    
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", telPhone=" + telPhone
+				+ ", sex=" + sex + "]";
+	}
+
 }
