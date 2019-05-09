@@ -29,6 +29,6 @@ public class UserController {
         User user = userService.findUserById(userId);
         log.debug(user.toString());
         model.addAttribute("user", user);  
-        return "index";  
+        return "login";  
     }  
 }

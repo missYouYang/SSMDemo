@@ -14,8 +14,21 @@
     <context:component-scan base-package="com.lz.controller" />          
      <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
-     <!-- 静态资源处理  css js imgs -->
-    <mvc:resources location="/resources/**" mapping="/resources"/>
+     <!-- 静态资源访问（不拦截此目录下的东西的访问）static 底下的静态资源-->
+ 	<!--  <mvc:default-servlet-handler/> -->
+    <mvc:resources mapping="/resources/**/" location="/resources/" cache-period="31536000"/>
+	<mvc:resources mapping="/static/**" location="/static/" cache-period="2592000"/>   
+	
+    <!-- <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31536000"/>   
+
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31536000"/>  
+
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31536000"/>  
+
+    <mvc:resources mapping="/img/**" location="/img/" cache-period="31536000"/>  
+
+    <mvc:resources mapping="/images/**" location="/images/" cache-period="31536000"/>   -->
+
   <!--   <context:annotation-config /> --> <!-- 自动帮助声明注解 -->
      <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
     <bean id="mappingJacksonHttpMessageConverter"  
@@ -73,7 +86,7 @@
    <!-- 定义跳转的文件的前后缀 ，视图模式配置-->  
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
-        <property name="prefix" value="/WEB-INF/jsp/" />  
+        <property name="prefix" value="/views/" />  
         <property name="suffix" value=".jsp" />  
     </bean>  
                        
