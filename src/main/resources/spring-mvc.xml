@@ -19,16 +19,6 @@
     <mvc:resources mapping="/resources/**/" location="/resources/" cache-period="31536000"/>
 	<mvc:resources mapping="/static/**" location="/static/" cache-period="2592000"/>   
 	
-    <!-- <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31536000"/>   
-
-    <mvc:resources mapping="/css/**" location="/css/" cache-period="31536000"/>  
-
-    <mvc:resources mapping="/js/**" location="/js/" cache-period="31536000"/>  
-
-    <mvc:resources mapping="/img/**" location="/img/" cache-period="31536000"/>  
-
-    <mvc:resources mapping="/images/**" location="/images/" cache-period="31536000"/>   -->
-
   <!--   <context:annotation-config /> --> <!-- 自动帮助声明注解 -->
      <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
     <bean id="mappingJacksonHttpMessageConverter"  
@@ -89,5 +79,17 @@
         <property name="prefix" value="/views/" />  
         <property name="suffix" value=".jsp" />  
     </bean>  
-                       
+   
+    <!-- 配置拦截器 -->
+  	<mvc:interceptors>
+  		 <mvc:interceptor>
+            <!--配置拦截器的作用路径-->
+            <mvc:mapping path="/**"/>
+            <!--定义在<mvc:interceptor>下面的表示匹配指定路径的请求才进行拦截-->
+            <bean class="com.lz.interceptors.LoginInterceptor"/>
+        </mvc:interceptor>
+	</mvc:interceptors>
+  	
+  	
+  	
 </beans>

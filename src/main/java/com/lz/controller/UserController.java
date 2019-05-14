@@ -40,19 +40,22 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
-    public String userLogin(User user,Model model) {
+    public String userLogin(HttpServletRequest request,User user,Model model) {
     	
     	try {
 			User reuser = userService.findUserByNameAndPs(user);
 			
 			if(reuser != null ) {
 				model.addAttribute("message", "登入成功");
+				//如果登入成功把用户名放入session中
+				request.getSession().setAttribute("userLogin", user);
 				return "tinHeart";
 			}else {
 				model.addAttribute("message", "你输入的用户或密码不正确");
 				return "login";
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			model.addAttribute("message", "访问出现异常");
 			return "login";
 		}
