@@ -27,28 +27,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <tr class="login-tr">
                             <td class="login-td">用户名</td>
                             <td class=".login-td2">
-                                <input type="text" name="userName" id="userName" onblur="p_a()"/>
+                                <input type="text" name="userName" id="userName" maxlength="15" onblur="p_a()"/>
                                 <div id="error_password1" class="error_password"></div>
                             </td>
                         </tr>
                         <tr class="login-tr">
                             <td class="login-td">密码</td>
                             <td class=".login-td2">
-                                <input type="password" name="password" id="password" onblur="p_a()">
+                                <input type="password" name="password" id="password" maxlength="15" onblur="p_a()">
                                 <div id="error_password" class="error_password"></div>
                             </td>
                         </tr>
                         <tr class="login-tr">
                             <td class="login-td">密码确认</td>
                             <td class=".login-td2">
-                                <input type="password" name="rePassword" id="rePassword" onblur="p_a()"/>
+                                <input type="password" name="rePassword" id="rePassword" maxlength="15" onblur="p_a()"/>
                                 <div id="error_password4" class="error_password"></div>
                             </td>
                         </tr>
                         <tr class="login-tr">
                             <td class="login-td">电话</td>
                             <td class=".login-td2">
-                                <input type="text" name="telPhone" id="telPhone"  onblur="p_a()"/>
+                                <input type="text" name="telPhone" id="telPhone" maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" onblur="p_a()"/>
                                 <div id="error_password2" class="error_password"></div>
                             </td>
                         </tr>

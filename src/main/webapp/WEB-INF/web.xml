@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>SSMDemo</display-name>
+  
+  <!-- mybatis 的配置 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-mybatis.xml</param-value>
   </context-param>
+  
+  <!-- 过滤器 start -->
   <filter>
     <filter-name>encodingFilter</filter-name>
+    <!-- 处理中文乱码 -->
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <async-supported>true</async-supported>
+    <!-- 配置参数 -->
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
+  
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
+    <!-- 所有请求 -->
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+   <!-- 过滤器 end -->
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
+  
+  <!-- SpringMVC -->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -41,4 +53,5 @@
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  
 </web-app>
