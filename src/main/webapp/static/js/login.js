@@ -22,6 +22,10 @@ function user_login(){
     }
 }
 function user_register() {
-    window.location.href = "../views/register.jsp";
+	
+	//获取项目名
+	var pathName=window.document.location.pathname;
+	
+    window.location.href = pathName+"views/register.jsp";
 }
 

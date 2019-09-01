@@ -1,6 +1,9 @@
 package com.lz.dao;
 
 
+import java.util.List;
+
+import com.lz.model.Menu;
 import com.lz.model.User;
 
 public interface UserDao {
@@ -13,4 +16,6 @@ public interface UserDao {
 	User findUserByNameAndPs(User user);
 	
 	int insertUser(User user);
+
+	List<Menu> queryMenuList(Object object);
 }

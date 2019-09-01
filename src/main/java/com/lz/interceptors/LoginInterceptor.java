@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	
-	private String NO_INTERCEPTOR_PATH = "/user/test|/user/userLogin|/static/css/login.css|/static/js/login.js|/static/image/火影4.jpg";
+	private String NO_INTERCEPTOR_PATH = "/views/.jsp/user/test|/user/userLogin|/static/css/login.css|/static/js/login.js|/static/image/火影4.jpg";
 	
 	/*
 	 * 拦截发送的请求
@@ -16,8 +16,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+				return true;
 		
-		String servletPath = request.getServletPath();
+/*		String servletPath = request.getServletPath();
 		if(NO_INTERCEPTOR_PATH.contains(servletPath)) {
 			return true;
 		}else {
@@ -28,21 +29,25 @@ public class LoginInterceptor implements HandlerInterceptor {
 				response.sendRedirect(request.getContextPath() + "/user/test");
 				return false;
 			}
-		}
+		}*/
 		
 	}
 
+	/*
+	 * 当调用试图解析器之前，调用该方法
+	 */
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/* 
+	 * 页面渲染完后，调用，一般用作释放资源
+	 */
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
