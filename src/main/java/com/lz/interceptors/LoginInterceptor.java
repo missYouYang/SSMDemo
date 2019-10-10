@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			throws Exception {
 				return true;
 		
-/*		String servletPath = request.getServletPath();
+		/*String servletPath = request.getServletPath();
 		if(NO_INTERCEPTOR_PATH.contains(servletPath)) {
 			return true;
 		}else {
@@ -39,7 +39,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		
+
 	}
 
 	/* 

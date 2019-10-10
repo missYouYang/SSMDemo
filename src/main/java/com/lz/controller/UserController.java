@@ -14,16 +14,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lz.dao.UserDao;
 import com.lz.model.Menu;
-import com.lz.model.User;
+import com.lz.model.UserBean;
 import com.lz.service.UserService;
-import com.lz.service.impl.UserServiceImpl;
 
 @Controller  
 @RequestMapping("/user")  
@@ -54,12 +52,12 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
-    public String userLogin(HttpServletRequest request,User user,Model model) {
+    public String userLogin(HttpServletRequest request, UserBean user, Model model) {
     	
     	try {
-			User reuser = userService.findUserByNameAndPs(user);
+			UserBean reuser = userService.findUserByNameAndPs(user);
 			
-			if(reuser != null ) {
+			if(reuser != null) {
 				model.addAttribute("message", "登入成功");
 				//如果登入成功把用户名放入session中
 				request.getSession().setAttribute("userLogin", user);
@@ -83,7 +81,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="/insertUser",method = RequestMethod.POST)
-    public String insertUser(User user,Model model) {
+    public String insertUser(UserBean user, Model model) {
     	
     	try {
 			int i = userService.insertUser(user);
@@ -100,8 +98,8 @@ public class UserController {
 		}
     }
     
-    /**添加用户
-     * @param user
+    /**递归多级菜单练习
+     * @param
      * @param model
      * @return
      */
@@ -137,6 +135,7 @@ public class UserController {
 
 
 
+       /*递归练习*/
     	private List<Menu> getChild(String id, List<Menu> rootMenu) {
     		// 子菜单
     		List<Menu> childList = new ArrayList<>();

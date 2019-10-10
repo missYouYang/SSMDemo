@@ -1,6 +1,6 @@
 package com.lz.service;
 
-import com.lz.model.User;
+import com.lz.model.UserBean;
 
 public interface UserService {
 	
@@ -9,12 +9,12 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	User findUserByNameAndPs(User user);
+	UserBean findUserByNameAndPs(UserBean user);
 
     /**添加用户
      * @param user
-     * @param model
+     * @param
      * @return
      */
-	int insertUser(User user);
+	int insertUser(UserBean user);
 }

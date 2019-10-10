@@ -4,7 +4,7 @@ package com.lz.dao;
 import java.util.List;
 
 import com.lz.model.Menu;
-import com.lz.model.User;
+import com.lz.model.UserBean;
 
 public interface UserDao {
 	
@@ -13,9 +13,9 @@ public interface UserDao {
 	 * @param user
 	 * @return
 	 */
-	User findUserByNameAndPs(User user);
+	UserBean findUserByNameAndPs(UserBean user);
 	
-	int insertUser(User user);
+	int insertUser(UserBean user);
 
 	List<Menu> queryMenuList(Object object);
 }

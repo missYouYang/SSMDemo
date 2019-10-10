@@ -9,32 +9,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta charset="UTF-8">
     <title>登入页面</title>
     <link rel="stylesheet" href="<%=basePath%>static/css/login.css" type="text/css">
+    <link rel="stylesheet" href="<%=basePath%>static/css/normalize.css" type="text/css">
     <script type="text/javascript" src="<%=basePath%>static/js/login.js"></script>
 </head>
-<body marginwidth="0" marginheight="0">
+
+<body>
+<!--整体-->
 <div class="login">
     <div class="login-box">
-        <form action="<%=basePath%>/user/userLogin" method="post" id="form_login" onsubmit="return user_login()" style="margin-left: 38px">
-            <div class="user-login" >密码登入
-            	 <div id="username_error" style="color: red;font-size: 15px">${message }</div>
+        <form action="<%=basePath%>/user/userLogin" method="post" id="form_login" onsubmit="return user_login()">
+
+            <div class="user-login" >用户登入
+                <!-- <div id="username_error" class="error">密码或账号</div>-->
             </div>
-			
-            <!--//用户-->
-            <div class="userName-login">
-                <input type="text" maxlength="15" class="login-userName-input" name="userName" id="userName"  placeholder="请输入用户名">
-                <div id="username_error" ></div>
-                <div id="username2_error" style="color: red; font-size: 16px ;text-align: center"></div>
+
+            <!--登入选择框-->
+            <div class="user-b">
+                <!--//用户-->
+                <div class="userName-login">
+                    <div id="username_error" class="error">${message }</div>
+                    <input type="text" maxlength="15" class="login-userName-input" name="userName" id="userName"  placeholder="请输入用户名">
+
+                </div>
+
+                <!--//m密码-->
+                <div class="userName-login">
+                    <div id="password_error" class="error">${message }</div>
+                    <input type="password" maxlength="15" class="login-userName-input" name="userPassword" id="password" placeholder="请输入密码">
+
+                </div>
+
+                <!-- //登入,注册按钮-->
+                <div class="login-button">
+                    <input type="submit" value="登入" class="login-button-input l0" id="userLogin" name="login" >
+                    <input type="button" value="注册" class="login-button-input r0" onclick="user_register()">
+                </div>
             </div>
-            <!--//m密码-->
-            <div class="userName-login">
-                <input type="password" maxlength="15" class="login-userName-input" name="password" id="password" placeholder="请输入密码">
-                <div id="password_error"></div>
-            </div>
-            <!-- //登入,注册按钮-->
-            <div class="login-button">
-                <input type="submit" value="登入" class="login-button-input" id="userLogin" name="login" >
-                <input type="button" value="注册" class="login-button-input2" onclick="user_register()">
-            </div>
+
         </form>
     </div>
 </div>
