@@ -1,13 +1,13 @@
-package com.lz.service.impl;
+package com.lz.nvshui.service.impl;
 
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.lz.dao.UserDao;
-import com.lz.model.UserBean;
-import com.lz.service.UserService;
+import com.lz.nvshui.dao.UserDao;
+import com.lz.nvshui.model.UserBean;
+import com.lz.nvshui.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{

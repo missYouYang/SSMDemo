@@ -1,4 +1,4 @@
-package com.lz.controller;
+package com.lz.nvshui.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lz.dao.UserDao;
-import com.lz.model.Menu;
-import com.lz.model.UserBean;
-import com.lz.service.UserService;
+import com.lz.nvshui.dao.UserDao;
+import com.lz.nvshui.model.Menu;
+import com.lz.nvshui.model.UserBean;
+import com.lz.nvshui.service.UserService;
 
 @Controller  
 @RequestMapping("/user")  

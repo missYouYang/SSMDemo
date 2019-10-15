@@ -1,4 +1,4 @@
-package com.lz.model;
+package com.lz.nvshui.model;
 
 import java.io.Serializable;
 

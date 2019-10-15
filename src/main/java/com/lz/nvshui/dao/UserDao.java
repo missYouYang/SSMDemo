@@ -1,10 +1,10 @@
-package com.lz.dao;
+package com.lz.nvshui.dao;
 
 
 import java.util.List;
 
-import com.lz.model.Menu;
-import com.lz.model.UserBean;
+import com.lz.nvshui.model.Menu;
+import com.lz.nvshui.model.UserBean;
 
 public interface UserDao {
 	

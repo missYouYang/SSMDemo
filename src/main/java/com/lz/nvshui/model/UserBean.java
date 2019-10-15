@@ -1,6 +1,4 @@
-package com.lz.model;
-
-import javax.persistence.Id;
+package com.lz.nvshui.model;
 
 public class UserBean extends DataBean{
 

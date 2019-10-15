@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
 
      <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->  
-    <context:component-scan base-package="com.lz.controller" />          
+    <context:component-scan base-package="com.lz.nvshui.controller" />
      <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
      <!-- 静态资源访问（不拦截此目录下的东西的访问）static 底下的静态资源-->
@@ -86,7 +86,7 @@
             <!--配置拦截器的作用路径-->
             <mvc:mapping path="/**"/>
             <!--定义在<mvc:interceptor>下面的表示匹配指定路径的请求才进行拦截-->
-            <bean class="com.lz.interceptors.LoginInterceptor"/>
+            <bean class="com.lz.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
 	</mvc:interceptors>
   	

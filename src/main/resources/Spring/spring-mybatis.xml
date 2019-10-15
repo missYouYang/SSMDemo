@@ -64,7 +64,7 @@
   <!--  <setting name="autoMappingBehavior" value="PARTIAL"/>-->
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-        <property name="basePackage" value="com.lz.dao" />  
+        <property name="basePackage" value="com.lz.nvshui.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean>  
   
@@ -87,7 +87,7 @@
      
      <!-- 事务的切入点 如果execution 学错回报Error creating bean with name 'userDao' defined in file -->
      <aop:config>
-     	<aop:pointcut expression="execution(* com.lz.service.impl..*.*(..))" id="services111"/>
+     	<aop:pointcut expression="execution(* com.lz.nvshui.service.impl..*.*(..))" id="services111"/>
      	<aop:advisor pointcut-ref="services111" advice-ref="txadvice1111"/>
      </aop:config>         
 </beans>

@@ -1,7 +1,7 @@
 package com.lz.util.file;
 
-import com.lz.model.DataBean;
-import com.lz.model.LoginBean;
+import com.lz.nvshui.model.DataBean;
+import com.lz.nvshui.model.LoginBean;
 
 import java.io.BufferedReader;
 import java.io.Reader;

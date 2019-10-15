@@ -3,9 +3,9 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.lz.dao.UserDao">
+<mapper namespace="com.lz.nvshui.dao.UserDao">
 	
-	<resultMap id="BaseResultMap" type="com.lz.model.UserBean" >
+	<resultMap id="BaseResultMap" type="com.lz.nvshui.model.UserBean" >
 		<!--需要开启驼峰命名 实体类字段和数据库字段相对映-->
 	</resultMap>
 
@@ -21,13 +21,13 @@
  	</sql>
 	
 	<!-- 根据用户名和密码查找用户 -->
-	<select id="findUserByNameAndPs" parameterType="com.lz.model.UserBean" resultMap="BaseResultMap">
+	<select id="findUserByNameAndPs" parameterType="com.lz.nvshui.model.UserBean" resultMap="BaseResultMap">
 		/*SELECT A.USER_ID,A.USER_NAME,A.USER_PASSWORD,A.USER_PHONE,A.USER_SEX,A.STATUS FROM AD_USER A*/
 		<include refid="Base_Column_List"/>
 	</select>
 	
 	<!-- 添加数据 -->
-	<insert id="insertUser" parameterType="com.lz.model.UserBean" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertUser" parameterType="com.lz.nvshui.model.UserBean" useGeneratedKeys="true" keyProperty="id">
 		insert into user(user_name,password,telPhone,sex) values(#{userName},#{password},#{telPhone},#{sex})
 	</insert>
 	

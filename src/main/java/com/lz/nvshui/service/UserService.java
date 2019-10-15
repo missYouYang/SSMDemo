@@ -1,6 +1,6 @@
-package com.lz.service;
+package com.lz.nvshui.service;
 
-import com.lz.model.UserBean;
+import com.lz.nvshui.model.UserBean;
 
 public interface UserService {
 	

@@ -1,4 +1,4 @@
-package com.lz.controller;
+package com.lz.nvshui.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
