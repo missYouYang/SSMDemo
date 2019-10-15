@@ -22,14 +22,14 @@
 
 
     <!-- 引入同文件夹下的redis属性配置文件 -->
-    <import resource="applicationContext-reids.xml"/>
+    <import resource="classpath:redis/applicationContext-reids.xml"/>
     
     <!-- 引入配置文件 -->  
     <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
         <property name="locations">
         	<list>
-        		<value>classpath:jdbc.properties</value>
-        		<value>classpath:redis.properties</value>
+        		<value>classpath:db/jdbc.properties</value>
+        		<value>classpath:redis/redis.properties</value>
         	</list>
         </property>  
     </bean>  
@@ -58,7 +58,7 @@
         <!-- mapper扫描 -->
         <property name="mapperLocations" value="classpath:mapper/mysql/*/*.xml"></property>
         <!--单独的mybatis设置  列入驼峰命名 resultMapping自动映射-->
-        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
     </bean>
 
   <!--  <setting name="autoMappingBehavior" value="PARTIAL"/>-->

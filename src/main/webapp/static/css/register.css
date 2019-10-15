@@ -12,10 +12,7 @@ body {
 .register {
     width: 300px;
     height: 372px;
-    /*background-color: rgba(0,0,0,0.5);*/
-    /*margin: 100px auto;*/
     margin-left: 516px;
-    /*margin-top: 244px;*/
     position: absolute;
     top:222px;
 }

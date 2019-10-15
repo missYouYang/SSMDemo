@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--整体-->
 <div class="login">
     <div class="login-box">
-        <form action="<%=basePath%>/user/userLogin" method="post" id="form_login" onsubmit="return user_login()">
+        <form action="<%=basePath%>/user/userLogin.do" method="post" id="form_login" onsubmit="return user_login()">
 
             <div class="user-login" >用户登入
                 <!-- <div id="username_error" class="error">密码或账号</div>-->
