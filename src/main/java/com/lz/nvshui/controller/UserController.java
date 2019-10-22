@@ -14,9 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.lz.nvshui.dao.UserDao;
 import com.lz.nvshui.model.Menu;
@@ -34,7 +32,15 @@ public class UserController {
     
     @Autowired
     private UserService userService;
-    
+
+
+
+	@RequestMapping(value="/rest",method=RequestMethod.GET)
+	public String restUrl(HttpServletRequest request, @RequestParam String url){
+
+		return url;
+	}
+
     /**
      * 原始界面
      * @param request
@@ -48,13 +54,33 @@ public class UserController {
     
     /**查询用户
      * @param user
-     * @param model
      * @return
      */
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
-    public String userLogin(HttpServletRequest request, UserBean user, Model model) {
-    	
-    	try {
+	@ResponseBody
+    public Map<String,Object> userLogin(HttpServletRequest request, @RequestBody UserBean user) {
+
+		HashMap remap = new HashMap<String,Object>();
+		try {
+			UserBean reUser = userService.findUserByNameAndPs(user);
+			if(reUser != null) {
+				/*    model.addAttribute("message", "登入成功");*/
+				//如果登入成功把用户名放入session中
+				request.getSession().setAttribute("userLogin", user);
+				remap.put("isSuccess",true);
+				return remap;
+			}else {
+				remap.put("isSuccess",false);
+				remap.put("msg","你输入的用户或密码不正确");
+				return remap;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			remap.put("msg","你输入的用户或密码不正确");
+			return remap;
+		}
+
+/*    	try {
 			UserBean reuser = userService.findUserByNameAndPs(user);
 			
 			if(reuser != null) {
@@ -70,7 +96,7 @@ public class UserController {
 			e.printStackTrace();
 			model.addAttribute("message", "访问出现异常");
 			return "login";
-		}
+		}*/
 	
     	
     }

@@ -17,7 +17,7 @@
     left: 0;
 }
 .r0 {
-    right: 0;
+   right: 0;
 }
 a {
     text-decoration: none;
@@ -61,7 +61,7 @@ body {
     height: 300px;
     position: absolute;
     background-color:rgba(255,255,255,0.8);
-    /* background-color: white;*/
+   /* background-color: white;*/
     right: 178px;
     bottom: 226px;
 
@@ -79,7 +79,7 @@ body {
 
 /*与用户登入分离，里面包含用户，密码，按钮*/
 .user-b{
-    /* background: #f10215;*/
+   /* background: #f10215;*/
     height: 175px;
 }
 .userName-login {

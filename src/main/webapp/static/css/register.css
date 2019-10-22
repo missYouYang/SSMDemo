@@ -1,77 +1,142 @@
-body {
+/*版心*/
+
+.w {
+    width: 1190px;
+    margin: 0 auto;
+}
+/*左右浮动*/
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+/*左右浮动0*/
+.l0 {
+    left: 0;
+}
+.r0 {
+    right: 0;
+}
+a {
+    text-decoration: none;
+    color: #999;
+    font-size: 13px;
+}
+.f10 {
+    color: #f10215 !important;
+}
+
+.fontFam{
+    font-family: 楷体;
+}
+/*清除内外边距还有*/
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul
+{
     margin: 0;
     padding: 0;
 }
+input,button {
+    /*复合属性。设置或检索对象外的线条轮廓。outline画在border外面 */
+    outline: none;/*取消轮框边框*/
+    border: 0;
+}
+ul {
+    list-style: none;
+
+}
+body {
+    background-color: #f6f6f6;
+}
+
+/*页面开始*/
 .register-1{
-    background: url("../image/火影5.jpg") no-repeat;
-    background-size: 1349px 641px;
-    width: 1349px;
-    height: 641px;
+    background: url("../images/jun.jpg") no-repeat;
+    background-size: 100% 100%;/*如果提供两个，第一个用于定义背景图像的宽度，第二个用于定义背景图像的高度。*/
     position: relative;
+    height: 950px;
 }
+
+/*注册的整体*/
 .register {
-    width: 300px;
-    height: 372px;
-    margin-left: 516px;
+    background-color: rgba(255,255,255,0.6);
+    width: 500px;
+   /* height: 700px;*/
     position: absolute;
-    top:222px;
+    right: 200px;
+    bottom: 225px;
 }
-.register-welcome {
-    color: #ff64c2;
-    width: 100px;
+/*欢迎注册*/
+.register_welcome {
+    font-family: 楷体;
+    color: rgba(234, 211, 41, 1);
     height: 72px;
     line-height: 100px;
     text-align: center;
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 59px;
+  /*  background-color: red;*/
 }
-.register-user {
-    width: 240px;
-    height: 263px;
-    /*background-color: rgba(0,0,0,0.5);*/
-    margin: 10px auto;
+
+/*注册信息面板*/
+.register_user {
+  /*  background: yellow;*/
+    height: 375px;
 }
-/*td 的整体设置*/
-/*.login-tr {
-    display: inline-block;
-    width: 240px;
-    margin: 12px 0;
-}*/
-.login-tr {
-    display: inline-block;
-    width: 240px;
-    margin-top: 0;
-    padding: 0;
+/*信息头*/
+.register_td_t{
+    font-size: 16px;
+    color: #6b5656;
 }
-.login-td {
-    width:100px;
-    color: blue;
-    font-size: 14px;
-    margin: 0;
+/*input*/
+.register_td_i{
+    height: 27px;
+    width: 274px;
+    border: 1px solid rgb(224, 201, 32);;
+;
+    padding-left: 5px;
 }
-.login-td2 {
-    width:200px;
+/*调整2个字体位置*/
+.register_divf2{
+    margin-left: 16px;
 }
-.register-get input{
-    width: 150px;
-    height: 40px;
-    color: #ff3390;
-    background-color: #cccccc;
-  /*  background: url("../image/火影1.jpg") no-repeat;*/
-    /*margin-left: auto;*/
-    margin-left: 60px;
-    margin-top: 20px;
-    border-radius: 25px;
+.register_tr{
+  /*  background: yellow;*/
+    margin-top: 30px;
+    display: block;
+    margin-left: 10px;
 }
-.register-get input:hover{
-    background-color: rgba(0,0,0,0.1);
-}
-.error_password {
-    width: 173px;
-    height: 12px;
-    margin-top: 2px;
-    margin-left: auto;
+/*报错信息*/
+.error_mage{
+    margin-left: 8px;
     color: red;
-    font-size: 12px;
+}
+.register_tr_spanb{
+    margin-right: 5px;
+}
+.register_tr_spang{
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+/*注册*/
+
+.register_b{
     text-align: center;
+}
+.register_button{
+    margin-top: 30px;
+    height: 46px;
+    width: 300px;
+    border: none;
+    color: #fff;
+    line-height: 46px;
+    font-size: 14px;
+    display: inline-block;
+    background-color:rgba(234, 211, 41, 1);
+    transition: all 0.75s ease;
+}
+.register_button:hover{
+    background-color: rgba(0,0,0,0.1);
 }

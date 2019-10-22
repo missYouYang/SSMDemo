@@ -1,93 +1,49 @@
-/**
- * Created by Lenovo on 2018/6/7.
- */
-/*俩次密码的验证*/
-
-function p_a() {
-
-    var userName = document.getElementById("userName");
-    var telPhone = document.getElementById("telPhone");
-    var password = document.getElementById("password");
-    var rePassword = document.getElementById("rePassword");
-    var error_password = document.getElementById("error_password");
-    var error_password1 = document.getElementById("error_password1");
-    var error_password2 = document.getElementById("error_password2");
-    var error_password3 = document.getElementById("error_password3");
-    var error_password4 = document.getElementById("error_password4");
-
-
-    if(password.value != rePassword.value){
-        error_password.innerHTML = "<div style='color: red;font-size: 10px'>两次输入的密码不一致</div>";
-
-    }else if(true){
-        error_password.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        if(password.value == ""){
-            error_password.innerHTML = "<div style='color: red;font-size: 10px'>密码不能为空</div>";
-        }else {
-            error_password.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        }
-        if(rePassword.value == ""){
-            error_password4.innerHTML = "<div style='color: red;font-size: 10px'>重复密码不能为空</div>";
-        }else {
-            error_password4.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        }
-    }
-    if(userName.value == ""){
-        error_password1.innerHTML = "<div style='color: red;font-size: 10px'>用户名不能为空</div>";
-    }else {
-        error_password1.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-    }
-
-
-
-    if(telPhone.value == ""){
-        error_password2.innerHTML = "<div style='color: red;font-size: 10px'>电话不能为空</div>";
-    }else {
-        error_password2.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-    }
-}
 function u_register() {
-    var userName = document.getElementById("userName");
-    var telPhone = document.getElementById("telPhone");
-    var password = document.getElementById("password");
-    var rePassword = document.getElementById("rePassword");
-    var error_password = document.getElementById("error_password");
-    var error_password1 = document.getElementById("error_password1");
-    var error_password2 = document.getElementById("error_password2");
-    var error_password3 = document.getElementById("error_password3");
-    var error_password4 = document.getElementById("error_password4");
-    if(password.value != rePassword.value){
-        error_password.innerHTML = "<div style='color: red;font-size: 10px'>两次输入的密码不一致</div>";
+    var userName = $("#userName").val();
+    var userPassword = $("#userPassword").val();
+    var userPhone = $("#userPhone").val();
+    var userSex = $('input[name="sex"]:checked').val();
+    var data = new FormData();
+    var fag= true;
+    if(userName != null && userName != ''){
 
-    }else if(password.value == "" || rePassword.value=="" ||password.value != rePassword.value){
-        error_password.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        if(password.value == ""){
-            error_password.innerHTML = "<div style='color: red;font-size: 10px'>密码不能为空</div>";
-        }else {
-            error_password.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        }
-
-        if(rePassword.value == ""){
-            error_password4.innerHTML = "<div style='color: red;font-size: 10px'>重复密码不能为空</div>";
-        }else {
-            error_password4.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-        }
+        $("#error_userName").html("");
+        data.append("userName",userName);
+    }else{
+        $("#error_userName").html("<a style='color: #f10215'>*</a>用户名不能为空");
+        fag =false;
     }
 
-    if(userName.value == ""){
-        error_password1.innerHTML = "<div style='color: red;font-size: 10px'>用户名不能为空</div>";
-    }else {
-        error_password1.innerHTML = "<div style='color: red;font-size: 10px'></div>";
-
+    if(userPassword != null && userPassword != ''){
+        data.append("userPassword",userPassword);
+        $("#error_upserPassword").html("")
+    }else{
+        $("#error_upserPassword").html("<a style='color: #f10215'>*</a>密码不能为空")
+        fag =false;
     }
 
-    if(telPhone.value == ""){
-        error_password2.innerHTML = "<div style='color: red;font-size: 10px'>电话不能为空</div>";
-    }else {
-        error_password2.innerHTML = "<div style='color: red;font-size: 10px'></div>";
+    if(userPhone != null && userPhone != ''){
+        data.append("userPhone",userPhone);
+        $("#error_upserPhone").html("")
+    }else{
+        $("#error_upserPhone").html("<a style='color: #f10215'>*</a>密码不能为空")
+        fag =false;
     }
+    data.append("userSex",userSex);
+    console.log(data.get("userSex"));
+    /*    if(fag ==true){
+            $.ajax({
+                url:"localhost:8080/SSMDemo/user/userLogin",
+                type:"post",
+                async:false,
+                data:data,
+                success:function (data) {
+                    console.log(data)
+                },
+                error:function () {
+                    alert("网络错误")
+                }
+            })
+        }*/
 
-    if(userName.value == "" ||password.value == "" || rePassword.value == "" || telPhone.value == "" || password.value != rePassword.value){
-        return false;
-    }
 }

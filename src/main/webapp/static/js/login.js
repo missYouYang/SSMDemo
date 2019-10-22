@@ -1,29 +1,38 @@
-/**
- * Created by Lenovo on 2018/6/2.
- */
-function user_login(){
+function user_login () {
+    $("#login_error").text("");
+    if($("#userName").val() == null || $("#userName").val() == ''){
+        $("#username_error").text("用户名不能为空");
+        return false;
+    }else{
+        $("#username_error").text("");
+    }
 
-    var userName =  document.getElementById("userName");
-    var password =  document.getElementById("password");
-    if (userName.value == "请输入用户名" || userName.value == "" ){
-        document.getElementById("username_error").innerHTML = "<div style='color: #FF0000; text-align: center;  font-size: 16px'>你好请输入用户名</div>";
+    if($("#password").val() == null || $("#password").val() == ''){
+        $("#password_error").text("密码不能为空");
         return false;
     }else {
-        document.getElementById("username_error").innerHTML = "";
+        $("#password_error").text("");
     }
-    if (password.value == "请输入用户名" || password.value == "" ){
-        document.getElementById("password_error").innerHTML = "<div style='color: #FF0000; text-align: center; font-size: 16px'>你好请输入用户密码</div>";
-        return false;
-    }else {
-        document.getElementById("password_error").innerHTML = "";
-
-    }
+    $.ajax({
+        async:false,
+        url:"user/userLogin",
+        type:"post",
+        dataType:"json",
+        contentType:"application/json;charset=utf-8",
+        data:JSON.stringify({
+            "userName":$("#userName").val(),
+            "userPassword":$("#password").val()
+        }),
+        success:function (data) {
+            if(data.isSuccess == true){
+                window.location.href="user/rest?url=pages/home";
+            }else{
+                console.log(data);
+                $("#login_error").text(data.msg);
+            }
+        },
+        error:function (data) {
+            alert(data.msg);
+        }
+    });
 }
-function user_register() {
-	
-	//获取项目名
-	var pathName=window.document.location.pathname;
-	
-    window.location.href = pathName+"views/register.jsp";
-}
-
