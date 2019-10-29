@@ -2,6 +2,8 @@ package com.lz.nvshui.service;
 
 import com.lz.nvshui.model.UserBean;
 
+import java.util.List;
+
 public interface UserService {
 	
 	/**
@@ -17,4 +19,6 @@ public interface UserService {
      * @return
      */
 	int insertUser(UserBean user);
+
+    List<UserBean> selectUsrList(UserBean user);
 }

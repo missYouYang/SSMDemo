@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -50,21 +51,46 @@ public class UserController {
     @RequestMapping(value="/test",method=RequestMethod.GET)  
     public String test(HttpServletRequest request,Model model){  
         return "login";  
-    }  
-    
-    /**查询用户
+    }
+
+
+
+
+
+
+
+	/**查询用户信息
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/selectUsrList",method = RequestMethod.POST)
+	@ResponseBody
+	public List<UserBean>  selectUsrList (UserBean user,HttpServletRequest request, HttpServletResponse response) {
+		HashMap remap = new HashMap<String,Object>();
+		try {
+			List<UserBean> userBean = userService.selectUsrList(user);
+			remap.put("data",userBean);
+			return userBean;
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.printStackTrace();
+			remap.put("msg","查询失败"+e);
+			return null;
+		}
+	}
+
+	/**查询用户
      * @param user
      * @return
      */
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
 	@ResponseBody
-    public Map<String,Object> userLogin(HttpServletRequest request, @RequestBody UserBean user) {
+    public Map<String,Object> userLogin(HttpServletRequest request, HttpServletResponse response, @RequestBody UserBean user) {
 
 		HashMap remap = new HashMap<String,Object>();
 		try {
 			UserBean reUser = userService.findUserByNameAndPs(user);
 			if(reUser != null) {
-				/*    model.addAttribute("message", "登入成功");*/
 				//如果登入成功把用户名放入session中
 				request.getSession().setAttribute("userLogin", user);
 				remap.put("isSuccess",true);
@@ -76,29 +102,9 @@ public class UserController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			remap.put("msg","你输入的用户或密码不正确");
+			remap.put("msg","查询失败"+e);
 			return remap;
 		}
-
-/*    	try {
-			UserBean reuser = userService.findUserByNameAndPs(user);
-			
-			if(reuser != null) {
-				model.addAttribute("message", "登入成功");
-				//如果登入成功把用户名放入session中
-				request.getSession().setAttribute("userLogin", user);
-				return "tinHeart";
-			}else {
-				model.addAttribute("message", "你输入的用户或密码不正确");
-				return "login";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("message", "访问出现异常");
-			return "login";
-		}*/
-	
-    	
     }
     
     /**添加用户
@@ -108,7 +114,6 @@ public class UserController {
      */
     @RequestMapping(value="/insertUser",method = RequestMethod.POST)
     public String insertUser(UserBean user, Model model) {
-    	
     	try {
 			int i = userService.insertUser(user);
 			if(i == 1 ) {
@@ -123,68 +128,4 @@ public class UserController {
 			return "register";
 		}
     }
-    
-    /**递归多级菜单练习
-     * @param
-     * @param model
-     * @return
-     */
-    @RequestMapping(value="/queryMenuList",method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String,Object> test(Map<String,Object> map,Model model) {
-    	
-    	
-    	// 原始的数据
-    	List<Menu> rootMenu = userDao.queryMenuList(null);
-    	// 查看结果
-    	for (Menu menu : rootMenu) {
-    		System.out.println(menu);
-    	}
-    	// 最后的结果
-    	List<Menu> menuList = new ArrayList<Menu>();
-    	// 先找到所有的一级菜单
-    	for (int i = 0; i < rootMenu.size(); i++) {
-    		// 一级菜单没有parentId
-    		if (StringUtils.isBlank(rootMenu.get(i).getParentId())) {
-    			menuList.add(rootMenu.get(i));
-    		}
-    	}
-    	// 为一级菜单设置子菜单，getChild是递归调用的
-    	for (Menu menu : menuList) {
-    		menu.setChildMenus(getChild(menu.getId(), rootMenu));
-    		}
-    		Map<String,Object> jsonMap = new HashMap<>();
-    		jsonMap.put("menu", menuList);
-    		System.out.println(jsonMap);
-			return jsonMap;
-    	}
-
-
-
-       /*递归练习*/
-    	private List<Menu> getChild(String id, List<Menu> rootMenu) {
-    		// 子菜单
-    		List<Menu> childList = new ArrayList<>();
-    		for (Menu menu : rootMenu) {
-    			// 遍历所有节点，将父菜单id与传过来的id比较
-    			if (StringUtils.isNotBlank(menu.getParentId())) {
-    				if (menu.getParentId().equals(id)) {
-    					childList.add(menu);
-    				}
-    			}
-    		}
-    		// 把子菜单的子菜单再循环一遍
-    		for (Menu menu : childList) {// 没有url子菜单还有子菜单
-    			if (StringUtils.isBlank(menu.getUrl())) {
-    				// 递归
-    				menu.setChildMenus(getChild(menu.getId(), rootMenu));
-    			}
-    		} // 递归退出条件
-    		if (childList.size() == 0) {
-    			return null;
-    		}
-    		return childList;
-    }
-    
-    
 }

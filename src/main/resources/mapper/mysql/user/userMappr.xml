@@ -22,7 +22,6 @@
 	
 	<!-- 根据用户名和密码查找用户 -->
 	<select id="findUserByNameAndPs" parameterType="com.lz.nvshui.model.UserBean" resultMap="BaseResultMap">
-		/*SELECT A.USER_ID,A.USER_NAME,A.USER_PASSWORD,A.USER_PHONE,A.USER_SEX,A.STATUS FROM AD_USER A*/
 		<include refid="Base_Column_List"/>
 	</select>
 	
@@ -30,6 +29,10 @@
 	<insert id="insertUser" parameterType="com.lz.nvshui.model.UserBean" useGeneratedKeys="true" keyProperty="id">
 		insert into user(user_name,password,telPhone,sex) values(#{userName},#{password},#{telPhone},#{sex})
 	</insert>
-	
-	
+
+	<!-- 查询所有用户 -->
+	<select id="selectUsrList" parameterType="com.lz.nvshui.model.UserBean" resultMap="BaseResultMap">
+		<include refid="Base_Column_List"/>
+	</select>
+
 </mapper>

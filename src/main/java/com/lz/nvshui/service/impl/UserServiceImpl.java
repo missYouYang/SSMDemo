@@ -9,6 +9,8 @@ import com.lz.nvshui.dao.UserDao;
 import com.lz.nvshui.model.UserBean;
 import com.lz.nvshui.service.UserService;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
 	
@@ -20,22 +22,33 @@ public class UserServiceImpl implements UserService{
 	 * @param user
 	 * @return
 	 */
-	@Override
 	public UserBean findUserByNameAndPs(UserBean user) {
 		UserBean reuser = userDao.findUserByNameAndPs(user);
 		System.out.println(reuser);
 		return reuser;
 	}
 	
-    /**添加用户
+    /**
+	 * 添加用户
      * @param user
      * @param
      * @return
      */
-	@Override
 	public int insertUser(UserBean user) {
 		int i = userDao.insertUser(user);
 		return i;
 	}
-	
+
+	/**
+	 * 查询用户
+	 * @param user
+	 * @return
+	 */
+	public List<UserBean> selectUsrList(UserBean user) {
+
+		List<UserBean> userList = userDao.selectUsrList(user);
+
+		return userList;
+	}
+
 }

@@ -18,4 +18,6 @@ public interface UserDao {
 	int insertUser(UserBean user);
 
 	List<Menu> queryMenuList(Object object);
+
+    List<UserBean> selectUsrList(UserBean user);
 }
