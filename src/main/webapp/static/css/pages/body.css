@@ -151,6 +151,10 @@
     text-align: center;
     color: #0ce450;
 }
+
+.body .bootstrap-table {
+    margin-top: 20px;
+ }
 /*抽出背景颜色*/
 b_red{
 

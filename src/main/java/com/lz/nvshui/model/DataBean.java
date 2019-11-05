@@ -3,7 +3,7 @@ package com.lz.nvshui.model;
 import java.io.Serializable;
 
 /**
- * @Description: TODO
+ * @Description: 公共类
  * @Author AZT
  * @Date 2019/10/9
  **/
@@ -15,11 +15,11 @@ public abstract class DataBean implements Serializable {
     private int startRow;           //页面分页时使用,记录开始行数
     private String dataId;          //操作数据ID
     private String rowId;           //mybatis操作返回的字段
-    private String operId;          //创建人
-    private String operName;        //创建人名称
+    private String createUserId;    //创建id
+    private String createName;      //创建人名称
     private String createTime;      //创建时间
-    private String updateUserId;    //最后修改人
-    private String updateUserName;  //最后修改人名称
+    private String updateUserId;    //最后修改人id
+    private String updateName;      //最后修改人名称
     private String updateTime;      //最后更新时间
     private String deleteFlg;       //删除状态,-1 删除;1 正常
     private String fileSuffx;       //文件后缀(不带“.”)
@@ -37,6 +37,16 @@ public abstract class DataBean implements Serializable {
     private String searchStatus;
     private String searchType;
 
+    private String sortOrder;        //排序
+
+    public String getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(String sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
     public int getCurPage() {
         return curPage;
     }
@@ -53,6 +63,30 @@ public abstract class DataBean implements Serializable {
     public void setCurPageCount(int curPageCount) {
         setStartRow((curPage-1)*curPageCount);
         this.curPageCount = curPageCount;
+    }
+
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public String getCreateName() {
+        return createName;
+    }
+
+    public void setCreateName(String createName) {
+        this.createName = createName;
+    }
+
+    public String getUpdateName() {
+        return updateName;
+    }
+
+    public void setUpdateName(String updateName) {
+        this.updateName = updateName;
     }
 
     public int getStartRow() {
@@ -79,22 +113,6 @@ public abstract class DataBean implements Serializable {
         this.rowId = rowId;
     }
 
-    public String getOperId() {
-        return operId;
-    }
-
-    public void setOperId(String operId) {
-        this.operId = operId;
-    }
-
-    public String getOperName() {
-        return operName;
-    }
-
-    public void setOperName(String operName) {
-        this.operName = operName;
-    }
-
     public String getCreateTime() {
         return createTime;
     }
@@ -111,13 +129,6 @@ public abstract class DataBean implements Serializable {
         this.updateUserId = updateUserId;
     }
 
-    public String getUpdateUserName() {
-        return updateUserName;
-    }
-
-    public void setUpdateUserName(String updateUserName) {
-        this.updateUserName = updateUserName;
-    }
 
     public String getUpdateTime() {
         return updateTime;

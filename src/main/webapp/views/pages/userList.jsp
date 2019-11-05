@@ -61,8 +61,8 @@
                     <span class="txt_nav">用户</span>
                 </a>
             </h3>
-            <ul class="clearfix">
-                <li class="nav_li_js">
+            <ul class="clearfix" style="display: block;">
+                <li class="nav_li_js active">
                     <a  href="rest?url=pages/userList">
                         <span>>> 用户列表</span>
                     </a>
@@ -194,7 +194,7 @@
     </div>
 
     <!--列表-->
-    <table class="" id="table">
+    <table class="" id="table" style="margin-top: 20px;">
 
     </table>
 </div>
@@ -202,7 +202,11 @@
 
 <!--body 结束-->
 
-<script src="<%=basePath%>static/js/pages/user.js" type="text/javascript"></script>
+<script src="<%=basePath%>static/js/pages/bootstrap/js/bstime.js" type="text/javascript"></script>
 <script src="<%=basePath%>static/js/pages/home.js" type="text/javascript"></script>
+<script src="<%=basePath%>static/js/pages/bootstrap/js/bootstrap-table.js" type="text/javascript"></script>
+<script src="<%=basePath%>static/js/pages/bootstrap/js/bootstrap-table-zh-CN.js" type="text/javascript"></script>
+<script src="<%=basePath%>static/js/pages/user.js" type="text/javascript"></script>
+
 </body>
 </html>

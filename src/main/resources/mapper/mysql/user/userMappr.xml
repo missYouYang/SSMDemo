@@ -13,11 +13,14 @@
 		SELECT A.USER_ID,A.USER_NAME,A.USER_PASSWORD,A.USER_PHONE,A.USER_SEX,A.STATUS,A.CREATE_USER, DATE_FORMAT(A.CREATE_TIME,'%Y-%m-%d %h:%m:%s') AS CREATE_TIME FROM AD_USER A
 		WHERE 1=1
 		<if test="userName != null and userName != ''">
-			AND USER_NAME = #{userName}
+			AND A.USER_NAME LIKE CONCAT(CONCAT('%',#{userName}),'%')
 		</if>
-		 <if test="userPassword != null and userPassword != ''">
-			 AND user_password = #{userPassword}
-		 </if>
+		<if test="userPhone != null and userPhone != ''">
+			AND A.USER_PHONE LIKE CONCAT(CONCAT('%',#{userPhone}),'%')
+		</if>
+		<if test="sortOrder != null and sortOrder != ''">
+			order by A.CREATE_TIME ${sortOrder}
+		</if>
  	</sql>
 	
 	<!-- 根据用户名和密码查找用户 -->

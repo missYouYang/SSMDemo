@@ -1,6 +1,17 @@
+
+var userName;
+var userPhone;
+function btn_search() {
+    userName = $("input[name='userName']").val();
+    userPhone = $("input[name='userTel']").val();
+    $("#table").bootstrapTable("refresh");
+}
+
 $('#table').bootstrapTable('destroy').bootstrapTable({
     url: '../user/selectUsrList',
     method: 'post',
+    dataType:'json',
+    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
     uniqueId: 'userId',                        // 绑定ID，不显示
     striped: false,                         //是否显示行间隔色
     cache: false,                          //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -24,55 +35,63 @@ $('#table').bootstrapTable('destroy').bootstrapTable({
             rows: params.limit,                         //页面大小
             page: (params.offset / params.limit) + 1,   //页码
             sort: params.sort,      //排序列名
-            sortOrder: params.order //排位命令（desc，asc）
+            sortOrder: params.order,//排位命令（desc，asc）
+            userName:userName,
+            userPhone:userPhone
         }
         return temp;
     },
     columns: [
         {
-            checkbox: true
-        },{
-            field: 'userName',
-            title:'用户名',
-            valign: 'middle',
-            width: '16%',
-            sortable: true
+            checkbox: true,
+            width:50
         },{
             field: 'userPassword',
-            title:'姓名',
-            width: '16%'
-        },{
-            field: 'userPhone',
-            title:'电话号码',
-            width: '16%'
+            title: '姓名',
+            align: 'center',
+            colspan: 1,
+            width:100
+
+        },
+        {
+            field: 'userName',
+            title:'用户名',
+            align: 'center',
+            colspan: 1,
+            width:100
         },{
             field: 'userSex',
             title:'性别',
-            valign: 'middle',
-            width: '16%'
+            align: 'center',
+            colspan: 1,
+            width:100
+        },{
+            field: 'userPhone',
+            title:'电话号码',
+            align: 'center',
+            colspan: 1,
+            width:100
         },{
             field: 'createUser',
             title:'创建者',
-            width: '16%'
+            align: 'center',
+            colspan: 1,
+            width:100
         }
     ],
 });
 
-function getSelectValue(){
+/*function getSelectValue(){
     var a = $table.bootstrapTable('getSelections');//获取选中行的数据
     if(a.length > 0){
         console.log(a);
     }
-}
+}*/
 
 /*按钮的操作 清空input*/
 function btn_empty() {
     $(".body_solr .body_name").val("");
 }
 
-function btn_search() {
 
-    console.log($("input[name='userName']").val());
-    console.log($("input[name='userTel']").val());
-}
 /*点击按钮搜索*/

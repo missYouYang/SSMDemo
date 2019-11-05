@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService{
 	 */
 	public List<UserBean> selectUsrList(UserBean user) {
 
+		System.out.println(user.getSortOrder());
 		List<UserBean> userList = userDao.selectUsrList(user);
 
 		return userList;
