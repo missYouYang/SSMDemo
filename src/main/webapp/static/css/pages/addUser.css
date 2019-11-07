@@ -1,0 +1,69 @@
+.add_user{
+    width: 1000px;
+    height: 50px;
+}
+
+/*模态框宽度*/
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 500px;
+    }
+}
+
+/*模态框body内边距*/
+
+.modal-body {
+    padding: 0px 15px 30px 15px;
+}
+/*模态框取消按钮*/
+#addUserBox .modal-footer button:nth-child(1){
+    background: rgba(105, 105, 105, 1);
+}
+
+#addUserBox .modal-footer button:nth-child(2){
+    background: rgba(12, 228, 80, 1);
+}
+
+#addUserBox .modal-footer button{
+    color: white;
+}
+
+#addUserBox .modal-footer button:nth-child(1):hover{
+    background: rgba(105, 105, 105, 0.6);
+}
+
+#addUserBox .modal-footer button:nth-child(2):hover{
+    background: rgba(12, 228, 80, 0.6);
+}
+
+/*input*/
+.register_td_i{
+    height: 27px;
+    width: 274px;
+    border: 1px solid rgb(224, 201, 32);
+    padding-left: 5px;
+    border-radius: 2px;
+}
+/*调整2个字体位置*/
+.register_divf2{
+    margin-left: 16px;
+}
+
+.register_tr{
+    /*  background: yellow;*/
+    margin-top: 30px;
+    display: block;
+    margin-left: 10px;
+}
+/*报错信息*/
+.error_mage{
+    margin-left: 8px;
+    color: red;
+}
+.register_tr_spanb{
+    margin-right: 5px;
+}
+.register_tr_spang{
+    margin-left: 10px;
+    margin-right: 5px;
+}

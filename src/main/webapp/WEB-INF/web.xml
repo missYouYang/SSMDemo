@@ -47,6 +47,7 @@
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>/</url-pattern>
@@ -54,5 +55,12 @@
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
-  
+
+
+  <!-- 用于配置文件分离 -->
+<!--  <context-param>
+    <param-name>customConfigDir</param-name>
+    <param-value>E:\test</param-value>
+  </context-param>-->
+
 </web-app>

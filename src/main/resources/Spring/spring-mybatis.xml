@@ -29,6 +29,8 @@
         <property name="locations">
         	<list>
         		<value>classpath:db/jdbc.properties</value>
+                <!--配置分离-->
+               <!-- <value>file:${customConfigDir}/jdbc.properties</value>-->
         		<value>classpath:redis/redis.properties</value>
         	</list>
         </property>  
@@ -89,5 +91,5 @@
      <aop:config>
      	<aop:pointcut expression="execution(* com.lz.nvshui.service.impl..*.*(..))" id="services111"/>
      	<aop:advisor pointcut-ref="services111" advice-ref="txadvice1111"/>
-     </aop:config>         
+     </aop:config>
 </beans>

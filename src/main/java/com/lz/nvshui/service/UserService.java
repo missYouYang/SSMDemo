@@ -20,5 +20,24 @@ public interface UserService {
      */
 	int insertUser(UserBean user);
 
+	/**
+	 * 查询全部用户
+	 * @param user
+	 * @return
+	 */
     List<UserBean> selectUsrList(UserBean user);
+
+	/**
+	 * 修改用户信息
+	 * @param user
+	 * @return
+	 */
+	int updateUser(UserBean user);
+
+	/**
+	 * 删除用户信息
+	 * @param user
+	 * @return
+	 */
+	int delUser(UserBean user);
 }

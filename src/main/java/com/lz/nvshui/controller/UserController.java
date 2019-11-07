@@ -54,28 +54,23 @@ public class UserController {
     }
 
 
-
-
-
-
-
 	/**查询用户信息
 	 * @param user
 	 * @return
 	 */
 	@RequestMapping(value="/selectUsrList",method = RequestMethod.POST)
 	@ResponseBody
-	public List<UserBean>  selectUsrList (UserBean user,HttpServletRequest request, HttpServletResponse response) {
-		HashMap remap = new HashMap<String,Object>();
+	public Map<String,Object> selectUsrList (@RequestBody UserBean user,HttpServletRequest request, HttpServletResponse response) {
+		Map<String,Object> remap = new HashMap<String,Object>();
 		try {
 			List<UserBean> userBean = userService.selectUsrList(user);
 			remap.put("data",userBean);
-			return userBean;
+			return remap;
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.printStackTrace();
 			remap.put("msg","查询失败"+e);
-			return null;
+			return remap;
 		}
 	}
 
@@ -84,10 +79,10 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
-	@ResponseBody
-    public Map<String,Object> userLogin(HttpServletRequest request, HttpServletResponse response, @RequestBody UserBean user) {
 
-		HashMap remap = new HashMap<String,Object>();
+    public @ResponseBody Map<String,Object> userLogin(HttpServletRequest request, HttpServletResponse response, @RequestBody UserBean user) {
+
+		Map<String,Object> remap = new HashMap<String,Object>();
 		try {
 			UserBean reUser = userService.findUserByNameAndPs(user);
 			if(reUser != null) {
@@ -109,23 +104,80 @@ public class UserController {
     
     /**添加用户
      * @param user
-     * @param model
      * @return
      */
     @RequestMapping(value="/insertUser",method = RequestMethod.POST)
-    public String insertUser(UserBean user, Model model) {
-    	try {
+    public @ResponseBody Map<String,Object> insertUser(@RequestBody UserBean user,HttpServletRequest request, HttpServletResponse response) {
+
+		Map<String,Object> remap = new HashMap<String,Object>();
+
+		try {
 			int i = userService.insertUser(user);
 			if(i == 1 ) {
-				return "login";
+				remap.put("isSuccess",true);
+				return remap;
 			}else {
-				model.addAttribute("message", "注册失败");
-				return "register";
+				remap.put("isSuccess",false);
+				remap.put("msg","添加失败");
+				return remap;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "访问出现异常");
-			return "register";
+			remap.put("isSuccess",false);
+			remap.put("msg","访问异常");
+			return remap;
 		}
     }
+
+	/**修改用户
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/updateUser",method = RequestMethod.POST)
+	public @ResponseBody Map<String,Object> updateUser(@RequestBody UserBean user, HttpServletRequest request, HttpServletResponse response) {
+
+		Map<String,Object> remap = new HashMap<String,Object>();
+		try {
+			int i = userService.updateUser(user);
+			if(i == 1 ) {
+				remap.put("isSuccess",true);
+				return remap;
+			}else {
+				remap.put("isSuccess",false);
+				remap.put("msg","添加失败");
+				return remap;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			remap.put("isSuccess",false);
+			remap.put("msg","访问异常");
+			return remap;
+		}
+	}
+
+	/**删除用户
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/delUser",method = RequestMethod.POST)
+	public @ResponseBody Map<String,Object> delUser(@RequestBody UserBean user, HttpServletRequest request, HttpServletResponse response) {
+
+		Map<String,Object> remap = new HashMap<String,Object>();
+		try {
+			int i = userService.delUser(user);
+			if(i == 1 ) {
+				remap.put("isSuccess",true);
+			}else {
+				remap.put("isSuccess",false);
+				remap.put("msg","添加失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			remap.put("isSuccess",false);
+			remap.put("msg","访问异常");
+		}
+		return remap;
+	}
+
+
 }

@@ -38,6 +38,15 @@ public abstract class DataBean implements Serializable {
     private String searchType;
 
     private String sortOrder;        //排序
+    private String page;
+
+    public String getPage() {
+        return page;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
+    }
 
     public String getSortOrder() {
         return sortOrder;

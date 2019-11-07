@@ -4992,7 +4992,7 @@
 	              v = _Object$entries3$_i[1];
 
 	          // ignore data-index
-	          if (k === 'home.css') {
+	          if (k === 'index') {
 	            return;
 	          }
 
@@ -5103,7 +5103,7 @@
 	                v = _Object$entries5$_i[1];
 
 	            // ignore data-index
-	            if (k === 'home.css') {
+	            if (k === 'index') {
 	              return;
 	            }
 
@@ -5233,7 +5233,7 @@
 	        var $tr = $td.parent();
 	        var $cardViewArr = $(e.target).parents('.card-views').children();
 	        var $cardViewTarget = $(e.target).parents('.card-view');
-	        var rowIndex = $tr.data('home.css');
+	        var rowIndex = $tr.data('index');
 	        var item = _this9.data[rowIndex];
 	        var index = _this9.options.cardView ? $cardViewArr.index($cardViewTarget) : $td[0].cellIndex;
 
@@ -5271,7 +5271,7 @@
 	      this.$body.find('> tr[data-index] > td > .detail-icon').off('click').on('click', function (e) {
 	        e.preventDefault();
 
-	        _this9.toggleDetailView($(e.currentTarget).parent().parent().data('home.css'));
+	        _this9.toggleDetailView($(e.currentTarget).parent().parent().data('index'));
 
 	        return false;
 	      });
@@ -5280,7 +5280,7 @@
 	        e.stopImmediatePropagation();
 	        var $this = $(e.currentTarget);
 
-	        _this9._toggleCheck($this.prop('checked'), $this.data('home.css'));
+	        _this9._toggleCheck($this.prop('checked'), $this.data('index'));
 	      });
 	      this.header.events.forEach(function (_events, i) {
 	        var events = _events;
@@ -5320,7 +5320,7 @@
 	            var name = key.substring(0, index);
 	            var el = key.substring(index + 1);
 	            $td.find(el).off(name).on(name, function (e) {
-	              var index = $tr.data('home.css');
+	              var index = $tr.data('index');
 	              var row = _this9.data[index];
 	              var value = row[field];
 	              event.apply(_this9, [e, value, row, index]);
@@ -5480,7 +5480,7 @@
 	      var _this12 = this;
 
 	      this.$selectItem.each(function (i, el) {
-	        _this12.data[$(el).data('home.css')][_this12.header.stateField] = $(el).prop('checked');
+	        _this12.data[$(el).data('index')][_this12.header.stateField] = $(el).prop('checked');
 	      });
 	    }
 	  }, {
@@ -5977,7 +5977,7 @@
 	  }, {
 	    key: "insertRow",
 	    value: function insertRow(params) {
-	      if (!params.hasOwnProperty('home.css') || !params.hasOwnProperty('row')) {
+	      if (!params.hasOwnProperty('index') || !params.hasOwnProperty('row')) {
 	        return;
 	      }
 
@@ -5999,7 +5999,7 @@
 	        for (var _iterator5 = allParams[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
 	          var _params = _step5.value;
 
-	          if (!_params.hasOwnProperty('home.css') || !_params.hasOwnProperty('row')) {
+	          if (!_params.hasOwnProperty('index') || !_params.hasOwnProperty('row')) {
 	            continue;
 	          }
 
@@ -6142,7 +6142,7 @@
 	  }, {
 	    key: "updateCell",
 	    value: function updateCell(params) {
-	      if (!params.hasOwnProperty('home.css') || !params.hasOwnProperty('field') || !params.hasOwnProperty('value')) {
+	      if (!params.hasOwnProperty('index') || !params.hasOwnProperty('field') || !params.hasOwnProperty('value')) {
 	        return;
 	      }
 
@@ -6201,7 +6201,7 @@
 	    value: function _toggleRow(params, visible) {
 	      var row;
 
-	      if (params.hasOwnProperty('home.css')) {
+	      if (params.hasOwnProperty('index')) {
 	        row = this.getData()[params.index];
 	      } else if (params.hasOwnProperty('uniqueId')) {
 	        row = this.getRowByUniqueId(params.uniqueId);
@@ -6839,7 +6839,7 @@
 	      var trs = this.$body.find('> tr[data-index][data-has-detail-view]');
 
 	      for (var i = 0; i < trs.length; i++) {
-	        this.expandRow($(trs[i]).data('home.css'));
+	        this.expandRow($(trs[i]).data('index'));
 	      }
 	    }
 	  }, {
@@ -6848,7 +6848,7 @@
 	      var trs = this.$body.find('> tr[data-index][data-has-detail-view]');
 
 	      for (var i = 0; i < trs.length; i++) {
-	        this.collapseRow($(trs[i]).data('home.css'));
+	        this.collapseRow($(trs[i]).data('index'));
 	      }
 	    }
 	  }, {

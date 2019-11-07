@@ -5,7 +5,7 @@
 <head>
     <title>后台管理</title>
     <link href="<%=basePath%>static/css/pages/body.css" rel="stylesheet" />
-
+    <link href="<%=basePath%>static/css/pages/addUser.css" rel="stylesheet" />
 </head>
 <body>
 <!-- 头部 -->
@@ -164,10 +164,10 @@
         </div>
         <!--左 添加 删除按钮-->
         <div class="body_top_l">
-            <button class="btn btn_search" type="button">
+            <button class="btn btn_search" id="add_user" type="button">
                 <i class="glyphicon glyphicon-plus body_top-l-i"></i><span>添加用户</span>
             </button>
-            <button class="btn btn_search" type="button">
+            <button class="btn btn_search" id="del_user" type="button">
                 <i class="glyphicon glyphicon-trash body_top-l-i"></i><span>删除用户</span>
             </button>
         </div>
@@ -198,9 +198,75 @@
 
     </table>
 </div>
-
-
 <!--body 结束-->
+<!--model 弹出框-->
+<div class="modal fade" id="addUserBox" tabindex="-1" role="dialog" aria-labelledby="addUserLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="addUserLabel">添加用户</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr class="register_tr">
+                        <td class="register_td_t fontFam">
+                            <div>用户名：</div>
+                        </td>
+                        <td><input class="register_td_i" type="text" name="userName" id="userName" maxlength="15"
+                                   placeholder="请输入用户名"/></td>
+                        <td>
+                            <div id="error_userName" class="error_mage fontFam">
+                                <!--<span id="user_name_span" style="display: block">*</span>--></div>
+                        </td>
+                    </tr>
+
+                    <tr class="register_tr">
+                        <td class="register_td_t fontFam">
+                            <div class="register_divf2">密码：</div>
+                        </td>
+                        <td><input class="register_td_i" type="password" name="userName" id="userPassword"
+                                   maxlength="15" placeholder="请输入密码"/></td>
+                        <td>
+                            <div id="error_upserPassword" class="error_mage fontFam"></div>
+                        </td>
+                    </tr>
+
+                    <tr class="register_tr">
+                        <td class="register_td_t fontFam">
+                            <div>手机号：</div>
+                        </td>
+                        <td><input class="register_td_i" type="text" name="userName" id="userPhone" maxlength="11"
+                                   placeholder="请输入手机号"/></td>
+                        <td>
+                            <div id="error_upserPhone" class="error_mage fontFam"></div>
+                        </td>
+                    </tr>
+
+                    <tr class="register_tr">
+                        <td class="register_td_t fontFam">
+                            <div class="register_divf2">性别：</div>
+                        </td>
+                        <td><span class="register_tr_spanb">男</span><input type="radio" name="sex" id="sex" value="男"
+                                                                           checked/>
+                            <span class="register_tr_spang">女</span><input type="radio" name="sex" id="sex2" value="女"/>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn_cancel" type="button" data-dismiss="modal">
+                    <span>取消</span>
+                </button>
+                <button class="btn btn_sure" type="button" id="submitAddUser">
+                    <span>保存</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="<%=basePath%>static/js/pages/bootstrap/js/bstime.js" type="text/javascript"></script>
 <script src="<%=basePath%>static/js/pages/home.js" type="text/javascript"></script>
