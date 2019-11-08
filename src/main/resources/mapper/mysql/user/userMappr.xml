@@ -19,6 +19,7 @@
         <if test="userPhone != null and userPhone != ''">
             AND A.USER_PHONE LIKE CONCAT(CONCAT('%',#{userPhone}),'%')
         </if>
+        AND A.STATUS != -1
         <if test="sortOrder != null and sortOrder != ''">
             order by A.CREATE_TIME ${sortOrder}
         </if>
